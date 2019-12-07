@@ -41,3 +41,13 @@ cd $BUILD_DIR/termite
 export PKG_CONFIG_PATH="$BUILD_DIR/vte-static/lib/pkgconfig"
 make
 sudo make install
+
+cat << EOF > termite.wrapper
+#!/bin/bash
+exec /usr/local/bin/termite "\$@"
+EOF
+
+sudo mv termite.wrapper /usr/local/bin
+sudo chmod +x /usr/local/bin/termite.wrapper
+
+sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/termite.wrapper 60
