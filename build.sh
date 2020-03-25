@@ -51,3 +51,6 @@ sudo mv termite.wrapper /usr/local/bin
 sudo chmod +x /usr/local/bin/termite.wrapper
 
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/termite.wrapper 60
+
+sudo mkdir -p /usr/share/terminfo
+sudo tic -x -o /usr/share/terminfo termite.terminfo
