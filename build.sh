@@ -42,15 +42,20 @@ export PKG_CONFIG_PATH="$BUILD_DIR/vte-static/lib/pkgconfig"
 make
 sudo make install
 
-cat << EOF > termite.wrapper
+sudo cat << EOF > termite.wrapper
 #!/bin/bash
 exec /usr/local/bin/termite "\$@"
 EOF
 
-sudo mv termite.wrapper /usr/local/bin
-sudo chmod +x /usr/local/bin/termite.wrapper
+sudo chmod +x termite.wrapper
+
+sudo install -d /usr/local/bin/
+sudo install -m 755 termite.wrapper /usr/local/bin/
 
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/termite.wrapper 60
 
-sudo mkdir -p /usr/share/terminfo
+sudo install -d /usr/local/etc/profile.d/
+sudo install -m 644 "$BUILD_DIR/vte-static/etc/profile.d/vte.sh" /usr/local/etc/profile.d/
+
+sudo install -d /usr/share/terminfo/
 sudo tic -x -o /usr/share/terminfo termite.terminfo
