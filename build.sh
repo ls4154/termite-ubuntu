@@ -57,7 +57,7 @@ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emula
 sudo install -d /usr/local/etc/profile.d/
 sudo install -m 644 "$BUILD_DIR/vte-static/etc/profile.d/vte.sh" /usr/local/etc/profile.d/
 
-sudo install -d /usr/share/terminfo/
+sudo install -d /usr/share/terminfo/x
 sudo ln -s /usr/local/share/terminfo/x/xterm-termite /usr/share/terminfo/x/xterm-termite
 
 cd $BUILD_DIR
