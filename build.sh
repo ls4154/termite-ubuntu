@@ -58,4 +58,6 @@ sudo install -d /usr/local/etc/profile.d/
 sudo install -m 644 "$BUILD_DIR/vte-static/etc/profile.d/vte.sh" /usr/local/etc/profile.d/
 
 sudo install -d /usr/share/terminfo/
-sudo tic -x -o /usr/share/terminfo termite.terminfo
+sudo ln -s /usr/local/share/terminfo/x/xterm-termite /usr/share/terminfo/x/xterm-termite
+
+cd $BUILD_DIR
